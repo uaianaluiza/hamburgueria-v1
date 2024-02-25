@@ -28,7 +28,7 @@ class HamburgueriaController(
     @GetMapping("listar/{id}")
     @ResponseStatus(HttpStatus.OK)
     fun buscarHamburguerPorId(@PathVariable id: Int): Hamburguer{
-        return service.buscarHamburguerPeloId(id)
+        return service.buscarHamburguerPorId(id)
     }
 
     @PutMapping("alterar/{id}")

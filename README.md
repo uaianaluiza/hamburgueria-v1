@@ -27,7 +27,16 @@
 
 ## Como testar
 
-### Post 
+### POST
 ![](src/img/testePost.jpg)
-### GET/PUT/DELETE {id}
+### GET/{id}
 ![](src/img/testGetId.jpg)
+
+### PUT/{id}
+![](src/img/testPutId.jpg)
+### DELETE/{id}
+![](src/img/testDeleteId.jpg)
+### GET
+![](src/img/testeListarTodos.jpg)
+### DELETE
+![](src/img/testDeleteTodos.jpg)
