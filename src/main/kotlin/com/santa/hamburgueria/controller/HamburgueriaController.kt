@@ -32,19 +32,19 @@ class HamburgueriaController(
     }
 
     @PutMapping("alterar/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     fun alterarHamburguer(@PathVariable id: Int,
                           @RequestBody escolha: HamburguerRequest):Hamburguer{
         return service.alterarHamburguer(id,escolha)
     }
 
     @DeleteMapping("deletar/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deletarHamburguer(@PathVariable id: Int){
         return service.deletarHamburguer(id)
     }
     @DeleteMapping("deletarTodos/")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deletarHamburgueres(){
         return service.deletarHamburgueres()
     }
