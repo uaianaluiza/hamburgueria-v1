@@ -23,7 +23,7 @@
 
 ## Como rodar a aplicação localmente
 
-![](src/main/kotlin/com/santa/hamburgueria/img/comoRodar.jpg)
+![](src/img/comoRodar.jpg)
 
 ## Como testar
 
