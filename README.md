@@ -1,4 +1,4 @@
-# API REST - SANTA HAMBURGUERIA
+# API REST - SANTA HAMBURGUERIA :hamburger:
 
 ## Api premite que você:
 |Função                                 |        Rota local                               |
