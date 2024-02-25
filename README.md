@@ -23,8 +23,11 @@
 
 ## Como rodar a aplicação localmente
 
-![src/main/kotlin/com/santa/hamburgueria/img/comoRodar.jpg]
+![](src/main/kotlin/com/santa/hamburgueria/img/comoRodar.jpg)
 
 ## Como testar
-![src/img/testePost.jpg]
-![src/img/testGetId.jpg]
+
+### Post 
+![](src/img/testePost.jpg)
+### GET/PUT/DELETE {id}
+![](src/img/testGetId.jpg)
