@@ -1,4 +1,4 @@
 package com.santa.hamburgueria.exceptions
 
-class HamburguerException(message: String) : Exception(message) {
+class HamburguerException(exception: String?) : RuntimeException(exception) {
 }
