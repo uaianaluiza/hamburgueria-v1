@@ -1,6 +1,6 @@
 # API REST - :hamburger: SANTA HAMBURGUERIA :hamburger:
 
-## Api premite que você:
+## Api permite que você:
 |Função                                 |        Rota local                               |
 |---------------------------------------|-------------------------------------------------|
 | crie um hambúrguer                    |  http://localhost:8090/hamburguer/              |
@@ -31,7 +31,6 @@
 ![](src/img/testePost.jpg)
 ### GET/{id}
 ![](src/img/testGetId.jpg)
-
 ### PUT/{id}
 ![](src/img/testPutId.jpg)
 ### DELETE/{id}

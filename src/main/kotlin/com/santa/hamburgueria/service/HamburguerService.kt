@@ -50,10 +50,10 @@ class HamburguerService(private val repository: HamburgueriaRepository) {
 
     fun deletarHamburguer(id: Int) {
         val hamburguer = buscarHamburguerPorId(id)
-        return repository.deleteById(hamburguer.id)
+        repository.deleteById(hamburguer.id)
     }
 
-    fun deletarHamburgueres() {
+    fun deletarHamburgueres () {
         repository.deleteAll()
     }
 
