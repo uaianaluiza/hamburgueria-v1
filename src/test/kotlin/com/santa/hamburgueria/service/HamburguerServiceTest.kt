@@ -6,7 +6,7 @@ import com.santa.hamburgueria.model.enuns.Carne
 import com.santa.hamburgueria.model.enuns.Queijo
 import com.santa.hamburgueria.model.enuns.Salada
 import com.santa.hamburgueria.model.enuns.TipoDePao
-import com.santa.hamburgueria.repository.HamburgueriaRepository
+import com.santa.hamburgueria.repository.HamburguerRepository
 import com.santa.hamburgueria.request.HamburguerRequest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -26,7 +26,7 @@ import java.util.stream.Stream
 class HamburguerServiceTest {
 
     @Mock
-    private lateinit var repository: HamburgueriaRepository
+    private lateinit var repository: HamburguerRepository
 
     @InjectMocks
     private lateinit var service: HamburguerService
@@ -39,11 +39,6 @@ class HamburguerServiceTest {
     private val request = HamburguerRequest(1, 2, 3, 1)
 
     internal data class TabelaTeste(val hamburguerRequest: HamburguerRequest, val hamburguer: Hamburguer? = null, val expected: String)
-    internal data class HamburguerTeste(
-        val hamburguerRequest: HamburguerRequest,
-        val hamburguer: Hamburguer,
-        val name: String
-    )
 
     @Test
     fun `teste criar hamburguer`() {
@@ -69,6 +64,16 @@ class HamburguerServiceTest {
 
         verify(repository, times(1)).findById(hamburguerTeste.id)
 
+    }
+
+    @Test
+    fun `teste buscar hamburguer por id erro`() {
+
+        `when`(repository.findById(hamburguerTeste.id)).thenReturn(Optional.of(hamburguerTeste))
+
+        assertThrows<HamburguerException> { service.buscarHamburguerPorId(20) }
+
+        verify(repository, times(1)).findById(20)
     }
 
     @Test
@@ -138,43 +143,49 @@ class HamburguerServiceTest {
         }.stream()
     }
 
-//        @TestFactory
-//    fun dynamicTestsOk(): Stream<DynamicTest> {
-//        val testeCenariosOk = listOf(
-//            HamburguerTeste(
-//                HamburguerRequest(1, 1, 1, 1),
-//                Hamburguer(TipoDePao.AUSTRALIANO, Carne.AO_PONTO, Queijo.CHEDDAR, Salada.ALFACE),
-//                "teste 1"
-//            ),
-//            HamburguerTeste(
-//                HamburguerRequest(2, 2, 2, 2),
-//                Hamburguer(TipoDePao.BRIOCHE, Carne.BEM_PASSADA, Queijo.MINAS, Salada.RÚCULA),
-//                "teste 2"
-//            ),
-//            HamburguerTeste(
-//                HamburguerRequest(3, 3, 3, 3),
-//                Hamburguer(TipoDePao.ARTESANAL, Carne.MAL_PASSADA, Queijo.MUSSARELA, Salada.TOMATE),
-//                "teste 3"
-//            ),
-//            HamburguerTeste(
-//                HamburguerRequest(4, 4, 4, 4),
-//                Hamburguer(TipoDePao.SEM_GLUTEM, Carne.VEGANA, Queijo.ZERO_LACTOSE, Salada.SEM_SALADA),
-//                "teste 4"
-//            ),
-//            HamburguerTeste(
-//                HamburguerRequest(4, 4, 5, 4),
-//                Hamburguer(TipoDePao.SEM_GLUTEM, Carne.VEGANA, Queijo.SEM_QUEIJO, Salada.SEM_SALADA),
-//                "teste 5"
-//            )
-//        )
-//        return testeCenariosOk.map { test ->
-//            DynamicTest.dynamicTest("${test.name}") {
-//                val resultado = service.criarHamburguer(test.hamburguerRequest)
-//
-//                assertEquals(test.hamburguer, resultado)
-//            }
-//
-//        }.stream()
-//
-//    }
+        @TestFactory
+        fun dynamicTestsOk(): Stream<DynamicTest> {
+
+            val testeCenariosOk = listOf(
+                TabelaTeste(
+                    HamburguerRequest(1, 1, 1, 1),
+                    Hamburguer(22,TipoDePao.AUSTRALIANO, Carne.AO_PONTO, Queijo.CHEDDAR, Salada.ALFACE),
+                    "teste 1"
+                ),
+                TabelaTeste(
+                    HamburguerRequest(2, 2, 2, 2),
+                    Hamburguer(23,TipoDePao.BRIOCHE, Carne.BEM_PASSADA, Queijo.MINAS, Salada.RÚCULA),
+                    "teste 2"
+                ),
+                TabelaTeste(
+                    HamburguerRequest(3, 3, 3, 3),
+                    Hamburguer(24,TipoDePao.ARTESANAL, Carne.MAL_PASSADA, Queijo.MUSSARELA, Salada.TOMATE),
+                    "teste 3"
+                ),
+                TabelaTeste(
+                    HamburguerRequest(4, 4, 4, 4),
+                    Hamburguer(25,TipoDePao.SEM_GLUTEM, Carne.VEGANA, Queijo.ZERO_LACTOSE, Salada.SEM_SALADA),
+                    "teste 4"
+                ),
+                TabelaTeste(
+                    HamburguerRequest(4, 4, 5, 4),
+                    Hamburguer(26,TipoDePao.SEM_GLUTEM, Carne.VEGANA, Queijo.SEM_QUEIJO, Salada.SEM_SALADA),
+                    "teste 5"
+                )
+            )
+            `when`(repository.save(any(Hamburguer::class.java))).thenAnswer { invocation ->
+                 invocation.getArgument(0) as Hamburguer
+            }
+
+            return testeCenariosOk.map { test ->
+                DynamicTest.dynamicTest(test.expected) {
+                    val resultado = service.criarHamburguer(test.hamburguerRequest)
+
+                    assertEquals(test.hamburguer!!.carne,resultado.carne)
+                    assertEquals(test.hamburguer!!.tipoDePao,resultado.tipoDePao)
+                    assertEquals(test.hamburguer!!.queijo,resultado.queijo)
+                    assertEquals(test.hamburguer!!.salada,resultado.salada)
+                }
+            }.stream()
+        }
 }
