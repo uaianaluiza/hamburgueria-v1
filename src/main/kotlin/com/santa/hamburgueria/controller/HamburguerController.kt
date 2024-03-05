@@ -9,7 +9,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/hamburguer/")
-class HamburgueriaController(
+class HamburguerController(
     private val service: HamburguerService
 ){
 
