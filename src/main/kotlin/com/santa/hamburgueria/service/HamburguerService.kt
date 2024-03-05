@@ -6,12 +6,12 @@ import com.santa.hamburgueria.model.enuns.Queijo
 import com.santa.hamburgueria.model.enuns.Salada
 import com.santa.hamburgueria.model.enuns.TipoDePao
 import com.santa.hamburgueria.model.Hamburguer
-import com.santa.hamburgueria.repository.HamburgueriaRepository
+import com.santa.hamburgueria.repository.HamburguerRepository
 import com.santa.hamburgueria.request.HamburguerRequest
 import org.springframework.stereotype.Service
 
 @Service
-class HamburguerService(private val repository: HamburgueriaRepository) {
+class HamburguerService(private val repository: HamburguerRepository) {
 
     fun criarHamburguer(request: HamburguerRequest): Hamburguer {
         val tipoDePao = escolherPao(request.tipoDePao)

@@ -26,7 +26,7 @@ class HamburguerControllerTest {
     private lateinit var service: HamburguerService
 
     @InjectMocks
-    private lateinit var controller: HamburgueriaController
+    private lateinit var controller: HamburguerController
 
     private val hamburguerTeste = Hamburguer(14, TipoDePao.AUSTRALIANO, Carne.BEM_PASSADA, Queijo.MUSSARELA, Salada.ALFACE)
     private val hamburguerTeste2 = Hamburguer(15, TipoDePao.SEM_GLUTEM, Carne.MAL_PASSADA, Queijo.ZERO_LACTOSE, Salada.ALFACE)
