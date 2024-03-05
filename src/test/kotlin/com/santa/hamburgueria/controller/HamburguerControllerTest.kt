@@ -34,7 +34,7 @@ class HamburguerControllerTest {
     private val request = HamburguerRequest(1, 2, 3, 1)
 
     @Test
-    fun `teste criar`() {
+    fun `teste criar hamburguer`() {
 
         val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
@@ -48,7 +48,7 @@ class HamburguerControllerTest {
     }
 
     @Test
-    fun `teste listar`() {
+    fun `teste listar todos os hamburgueres`() {
 
         val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
@@ -62,7 +62,7 @@ class HamburguerControllerTest {
     }
 
     @Test
-    fun `teste listar por id`() {
+    fun `teste listar hamburguer por id`() {
 
         val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
@@ -76,7 +76,7 @@ class HamburguerControllerTest {
     }
 
     @Test
-    fun `teste alterar`() {
+    fun `teste alterar hamburguer`() {
 
         val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
@@ -93,7 +93,7 @@ class HamburguerControllerTest {
     }
 
     @Test
-    fun `teste deletar`() {
+    fun `teste deletar todos os hamburgueres`() {
 
         val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
@@ -106,7 +106,7 @@ class HamburguerControllerTest {
     }
 
     @Test
-    fun`teste deletar por id`(){
+    fun`teste deletar hamburguer por id`(){
         val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
         doNothing().`when`(service).deletarHamburguer(hamburguerTeste2.id)
@@ -117,5 +117,4 @@ class HamburguerControllerTest {
             .andExpect(MockMvcResultMatchers.status().isNoContent)
 
     }
-
 }

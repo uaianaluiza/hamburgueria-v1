@@ -67,7 +67,7 @@ class HamburguerServiceTest {
     }
 
     @Test
-    fun `teste buscar hamburguer por id erro`() {
+    fun `teste excecao buscar hamburguer por id`() {
 
         `when`(repository.findById(hamburguerTeste.id)).thenReturn(Optional.of(hamburguerTeste))
 
@@ -125,7 +125,7 @@ class HamburguerServiceTest {
     }
 
     @TestFactory
-    fun dynamicTests(): Stream<DynamicTest> {
+    fun testeExcecaoOpcaoIngredientes(): Stream<DynamicTest> {
         val testeCenarios = listOf(
             TabelaTeste(HamburguerRequest(1, 2, 3, 8), null,"Salada - Opção inválida"),
             TabelaTeste(HamburguerRequest(9, 2, 3, 1),null, "Pão - Opção inválida"),
@@ -144,7 +144,7 @@ class HamburguerServiceTest {
     }
 
         @TestFactory
-        fun dynamicTestsOk(): Stream<DynamicTest> {
+        fun testeCriarHamburguerTodosIngredientes(): Stream<DynamicTest> {
 
             val testeCenariosOk = listOf(
                 TabelaTeste(
