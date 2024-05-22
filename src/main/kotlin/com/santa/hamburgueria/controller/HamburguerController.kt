@@ -41,11 +41,11 @@ class HamburguerController(
     @DeleteMapping("deletar/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deletarHamburguer(@PathVariable id: Int){
-        return service.deletarHamburguer(id)
+        service.deletarHamburguer(id)
     }
     @DeleteMapping("deletarTodos/")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deletarHamburgueres(){
-        return service.deletarHamburgueres()
+        service.deletarHamburgueres()
     }
 }
