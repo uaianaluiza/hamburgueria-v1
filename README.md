@@ -1,5 +1,8 @@
 # API REST - :hamburger: SANTA HAMBURGUERIA :hamburger:
 
+Santa Hamburgueria é a primeira versão de uma api que tem como objetivo mostrar todas as tecnologias que tenho estudado e trabalhado recentemente,
+ao longo do desenvolvimento das demais versões vou evoluir o projeto com mais tecnologias.
+
 ## Api permite que você:
 |Função                                 |        Rota local                               |
 |---------------------------------------|-------------------------------------------------|
@@ -19,11 +22,7 @@
 
 ## Modelo Arquiterura
 
- - MVC
-
-## Como rodar a aplicação localmente
-
-![](src/img/comoRodar.jpg)
+ - MVC (Model View Controller)
 
 ## Como testar
 
